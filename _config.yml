@@ -14,7 +14,7 @@ timezone: ''
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://jk117.github.io
-permalink: :year/:month/:day/:title/
+permalink: :title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -46,7 +46,8 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
+  line_threshold: 6 # Not effective
+  auto_detect: true
   tab_replace: ''
   wrap: true
   hljs: false
