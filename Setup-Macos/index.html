@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jk117.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.14.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="基于个人习惯和喜好梳理的MacOS系统基础配(到好用为)置For macOS Ventura 13.2 &amp; Apple Silicon">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MacOS Setup">
+<meta property="og:url" content="https://jk117.github.io/Setup-Macos/index.html">
+<meta property="og:site_name" content="Get Some Fries">
+<meta property="og:description" content="基于个人习惯和喜好梳理的MacOS系统基础配(到好用为)置For macOS Ventura 13.2 &amp; Apple Silicon">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-02-22T07:45:39.820Z">
+<meta property="article:modified_time" content="2023-02-22T07:45:39.820Z">
+<meta property="article:author" content="JK117">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jk117.github.io/Setup-Macos/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jk117.github.io/Setup-Macos/","path":"Setup-Macos/","title":"MacOS Setup"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>MacOS Setup | Get Some Fries</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Get Some Fries</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">没有🍟的文明毫无意义</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%AE%BE%E5%AE%9A"><span class="nav-number">1.</span> <span class="nav-text">命令行设定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">显示隐藏文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E9%BC%A0%E6%A0%87%E5%8F%98%E9%80%9F"><span class="nav-number">1.2.</span> <span class="nav-text">调整鼠标变速</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A6%81%E7%94%A8%E7%BF%BB%E7%9B%96%E5%BC%80%E6%9C%BA"><span class="nav-number">1.3.</span> <span class="nav-text">禁用翻盖开机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPv6%E8%A7%A3%E6%9E%90"><span class="nav-number">1.4.</span> <span class="nav-text">IPv6解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E5%B7%A5%E5%85%B7Debug%E8%8F%9C%E5%8D%95"><span class="nav-number">1.5.</span> <span class="nav-text">磁盘工具Debug菜单</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F-amp-APP%E8%AE%BE%E5%AE%9A"><span class="nav-number">2.</span> <span class="nav-text">系统&amp;APP设定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Finder"><span class="nav-number">2.1.</span> <span class="nav-text">Finder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dictionary"><span class="nav-number">2.2.</span> <span class="nav-text">Dictionary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Alfred-5"><span class="nav-number">2.3.</span> <span class="nav-text">Alfred 5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mos"><span class="nav-number">2.4.</span> <span class="nav-text">Mos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Contexts"><span class="nav-number">2.5.</span> <span class="nav-text">Contexts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logi-Options"><span class="nav-number">2.6.</span> <span class="nav-text">Logi Options+</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JK117</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jk117.github.io/Setup-Macos/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JK117">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Get Some Fries">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="MacOS Setup | Get Some Fries">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MacOS Setup
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-02-22 07:45:39" itemprop="dateCreated datePublished" datetime="2023-02-22T07:45:39+00:00">2023-02-22</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>基于个人习惯和喜好梳理的MacOS系统基础配(到好用为)置<br>For macOS Ventura 13.2 &amp; Apple Silicon</p>
+<span id="more"></span>
+
+<h2 id="命令行设定"><a href="#命令行设定" class="headerlink" title="命令行设定"></a>命令行设定</h2><h3 id="显示隐藏文件"><a href="#显示隐藏文件" class="headerlink" title="显示隐藏文件"></a>显示隐藏文件</h3><p><strong>推荐</strong> 对于开发而言那必须啊</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults <span class="built_in">write</span> com.apple.finder AppleShowAllFiles -<span class="built_in">boolean</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">killall</span> Finder <span class="comment"># 重启Finder</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="调整鼠标变速"><a href="#调整鼠标变速" class="headerlink" title="调整鼠标变速"></a>调整鼠标变速</h3><p><strong>推荐</strong> Mac的触摸板是爽，但为触摸板调校的鼠标加速度给鼠标用就有点难受了，可以禁用系统的鼠标加速scaling</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults <span class="built_in">read</span> .GlobalPreferences com.apple.mouse.scaling <span class="comment"># 读取当前scaling</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults <span class="built_in">write</span> .GlobalPreferences com.apple.mouse.scaling <span class="number">-1</span> <span class="comment"># 禁用</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="禁用翻盖开机"><a href="#禁用翻盖开机" class="headerlink" title="禁用翻盖开机"></a>禁用翻盖开机</h3><p><strong>推荐</strong> 有时候想关机了清洁一下键盘，翻开盖子直接DUANG也会有点不方便</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nvram AutoBoot=%00 <span class="comment"># 禁用</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nvram AutoBoot=%03 <span class="comment"># 恢复</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="IPv6解析"><a href="#IPv6解析" class="headerlink" title="IPv6解析"></a>IPv6解析</h3><p><strong>选用</strong> 仅在需要时使用</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">networksetup</span> -setv6<span class="literal">off</span> Wi-Fi <span class="comment"># 关闭</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">networksetup</span> -setv6automatic Wi-Fi <span class="comment"># 恢复auto</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="磁盘工具Debug菜单"><a href="#磁盘工具Debug菜单" class="headerlink" title="磁盘工具Debug菜单"></a>磁盘工具Debug菜单</h3><p><strong>选用</strong> 仅在需要时使用</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com<span class="selector-class">.apple</span><span class="selector-class">.DiskUtility</span> DUDebugMenuEnabled <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>重启“磁盘工具”，菜单栏里会多出一项“调试”菜单，选中此菜单中的“显示所有分区”菜单项，就会在左侧显示出磁盘的隐藏分区。</p>
+<h2 id="系统-amp-APP设定"><a href="#系统-amp-APP设定" class="headerlink" title="系统&amp;APP设定"></a>系统&amp;APP设定</h2><h3 id="Finder"><a href="#Finder" class="headerlink" title="Finder"></a>Finder</h3><p><strong>推荐</strong> 尽可能展示有用信息<br>显示文件扩展名<br><code>Settings</code> -&gt; <code>Advanced</code> -&gt; <code>Show all filename extensions</code><br>显示路径<br><code>View</code> -&gt; <code>Show Path Bar</code><br>显示状态栏<br><code>View</code> -&gt; <code>Show Status Bar</code></p>
+<h3 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h3><p><strong>推荐</strong> 很多人忽视的系统级功能，在任意界面任意文本词汇上重压触摸板是可以触发词典功能的。在系统语言为美语、简体中文的情况下系统默认开启了许多词典，在此仅选用牛津英汉词典已可以满足日常单词查阅需求了。<br><code>Settings</code> -&gt; ✅牛津英汉汉英词典</p>
+<h3 id="Alfred-5"><a href="#Alfred-5" class="headerlink" title="Alfred 5"></a><a target="_blank" rel="noopener" href="https://www.alfredapp.com/">Alfred 5</a></h3><p><strong>推荐</strong></p>
+<h3 id="Mos"><a href="#Mos" class="headerlink" title="Mos"></a><a target="_blank" rel="noopener" href="https://github.com/Caldis/Mos">Mos</a></h3><p><strong>推荐</strong></p>
+<h3 id="Contexts"><a href="#Contexts" class="headerlink" title="Contexts"></a><a target="_blank" rel="noopener" href="https://contexts.co/">Contexts</a></h3><p><strong>选用</strong></p>
+<h3 id="Logi-Options"><a href="#Logi-Options" class="headerlink" title="Logi Options+"></a><a target="_blank" rel="noopener" href="https://www.logitech.com/en-sg/software/logi-options-plus.html#software-download">Logi Options+</a></h3><p><strong>选用</strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JK117</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
