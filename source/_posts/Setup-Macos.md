@@ -101,15 +101,16 @@ defaults write com.apple.DiskUtility DUDebugMenuEnabled 1
 
 ### [Mos](https://github.com/Caldis/Mos)
 **推荐** 一个用于在MacOS上平滑鼠标滚动效果的小工具, 填平mac鼠标控制的坑，让滚轮爽如触控板。注个人设置如下，意最好*关闭*系统和其他第三方鼠标工具(如Logi Options)中的*Smooth Scrolling*(*平滑滚动*)，并设置*Scroll Diraction*为*Natural*
-
-| ![](\images\mos_general.png) | ![](\images\mos_advanced.png) |
+<!-- | ![](\images\mos_general.png) | ![](\images\mos_advanced.png) | -->
+| <img src="/images/mos_general.png"> | <img src="/images/mos_advanced.png"> |
 | --- | --- |
 <!-- <img src="/images/mos_general.png" width="50%" height="50%"> -->
 <!-- <img src="/images/mos_advanced.png" width="50%" height="50%"> -->
 
 ### [Logi Options+](https://www.logitech.com/en-sg/software/logi-options-plus.html#software-download)
 **选用** MX Master yyds啊。鼠标键位配置后非常适合mac使用。个人设置如下，注意如果配合Mos使用的话关闭*Smooth scrolling*，并设置*Scoll direction*为*Natural*
-| ![](\images\logi_options_buttons.png) | ![](\images\logi_options_wheel.png) |
+<!-- | ![](\images\logi_options_buttons.png) | ![](\images\logi_options_wheel.png) | -->
+| <img src="/images/logi_options_buttons.png"> | <img src="/images/logi_options_wheel.png"> |
 | --- | --- |
 <!-- <img src="/images/logi_options_buttons.png" width="50%" height="50%"> -->
 <!-- <img src="/images/logi_options_wheel.png" width="50%" height="50%"> -->
