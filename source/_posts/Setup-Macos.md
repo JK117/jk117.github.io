@@ -111,34 +111,23 @@ Spotlight高替，比较坑的是5开始导出/导入备份的profile变成收�
 **推荐** [官网](https://contexts.co/)
 Contexts可以实现通过快捷键切换窗口，包括同一应用的不同窗口。目前阶段依然比Ventura的台前调度好用。重点配置 *Command-Tab* 项中切换窗口的组合键(习惯使用 `Command+Tab` 激活切换)，注意勾选 *Show windows from: All Spaces* (在所有显示器的窗口间切换)和 *Show windows of: All apps* (在所有应用的窗口间切换)。注意 *Search* 项中的默认组合键 `^+Space` 可能与其他应用冲突，建议取消勾选
 <!-- <img src="./Setup-Macos/contexts_tab.png" width="70%" height="70%"> -->
-<div style="width:70%;margin:auto">
-{% asset_img contexts_tab.png %}
-</div>
+{% asset_img mid-size-image contexts_tab.png %}
 切换效果如图
 <!-- <img src="./Setup-Macos/contexts_panel.png" width="70%" height="70%"> -->
-<div style="width:70%;margin:auto">
-{% asset_img contexts_panel.png %}
-</div>
-
+{% asset_img mid-size-image contexts_panel.png %}
 
 ### Mos
 **推荐** [Github](https://github.com/Caldis/Mos)
 一个用于在MacOS上平滑鼠标滚动效果的小工具, 填平mac鼠标控制的坑，让滚轮爽如触控板。注个人设置如下，注意最好关闭系统和其他第三方鼠标工具(如Logi Options)中的 *Smooth Scrolling* ，并设置 *Scroll Diraction* 为 *Natural* ，以防冲突
-<!-- <img src="./Setup-Macos/mos_general.png" width="70%" height="70%">
-<img src="./Setup-Macos/mos_advanced.png" width="70%" height="70%"> -->
-<div style="width:70%;margin:auto">
-{% asset_img mos_general.png %}
-{% asset_img mos_advanced.png %}
-</div>
+<!-- <img src="./Setup-Macos/mos_general.png" width="70%" height="70%"> -->
+<!-- <img src="./Setup-Macos/mos_advanced.png" width="70%" height="70%"> -->
+{% asset_img mid-size-image mos_general.png %}
+{% asset_img mid-size-image mos_advanced.png %}
 
 ### Logi Options+
 **选用** [下载](https://www.logitech.com/en-sg/software/logi-options-plus.html#software-download)
 MX Master yyds，鼠标键位配置后非常适合mac使用。如下设置后可以大部分替代触摸板手势，解放手腕。注意如果配合Mos使用的话关闭 *Smooth scrolling* ，并设置 *Scoll direction* 为 *Natural* 
 {% gp 2-2 %}
-<!-- ![](logi_buttons.png)
-![](logi_wheel.png) -->
-{% asset_img logi_buttons.png %}
-{% asset_img logi_wheel.png %}
+    {% asset_img logi_buttons.png %}
+    {% asset_img logi_wheel.png %}
 {% endgp %}
-<!-- <img src="/images/logi_buttons.png" width="50%" height="50%">
-<img src="/images/logi_wheel.png" width="50%" height="50%"> -->
