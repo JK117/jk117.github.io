@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jk117.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.14.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="基于个人踩坑流程梳理的命令行终端安装及配置流程(国内的网啊)主要包含homebrew + Oh My Zsh + iTerm + VS Code配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shell &amp; Terminal Setup">
+<meta property="og:url" content="https://jk117.github.io/Setup-Shell-Terminal/index.html">
+<meta property="og:site_name" content="Get Some Fries">
+<meta property="og:description" content="基于个人踩坑流程梳理的命令行终端安装及配置流程(国内的网啊)主要包含homebrew + Oh My Zsh + iTerm + VS Code配置">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-02-27T16:12:42.000Z">
+<meta property="article:modified_time" content="2023-02-27T08:13:33.263Z">
+<meta property="article:author" content="JK117">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jk117.github.io/Setup-Shell-Terminal/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jk117.github.io/Setup-Shell-Terminal/","path":"Setup-Shell-Terminal/","title":"Shell & Terminal Setup"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Shell & Terminal Setup | Get Some Fries</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Get Some Fries</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">没有🍟的文明毫无意义</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Xcode-Command-Line-Tools"><span class="nav-number">1.</span> <span class="nav-text">Xcode Command Line Tools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homebrew"><span class="nav-number">2.</span> <span class="nav-text">Homebrew</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%A2%E6%BA%90"><span class="nav-number">2.2.</span> <span class="nav-text">换源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oh-My-Zsh"><span class="nav-number">3.</span> <span class="nav-text">Oh My Zsh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iTerm2"><span class="nav-number">4.</span> <span class="nav-text">iTerm2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-1"><span class="nav-number">4.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">4.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Powerlevel10k-%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="nav-number">4.3.</span> <span class="nav-text">Powerlevel10k 主题配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zsh-autosuggestions-%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8"><span class="nav-number">4.4.</span> <span class="nav-text">zsh-autosuggestions 自动补全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zsh-syntax-highlighting-%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE"><span class="nav-number">4.5.</span> <span class="nav-text">zsh-syntax-highlighting 语法高亮</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VS-Code"><span class="nav-number">5.</span> <span class="nav-text">VS Code</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JK117</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jk117.github.io/Setup-Shell-Terminal/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JK117">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Get Some Fries">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Shell & Terminal Setup | Get Some Fries">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Shell & Terminal Setup
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-02-27 16:12:42 / Modified: 08:13:33" itemprop="dateCreated datePublished" datetime="2023-02-27T16:12:42+00:00">2023-02-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>基于个人踩坑流程梳理的命令行终端安装及配置流程(国内的网啊)<br>主要包含homebrew + Oh My Zsh + iTerm + VS Code配置</p>
+<span id="more"></span>
+<p>注：从macOS Catalina开始，系统使用zsh作为默认登录shell和交互式shell</p>
+<hr>
+<h2 id="Xcode-Command-Line-Tools"><a href="#Xcode-Command-Line-Tools" class="headerlink" title="Xcode Command Line Tools"></a>Xcode Command Line Tools</h2><p>XCLT包含有整个macOS的sdk，clang编译器，make等对于开发而言最基础的系统工具，以及最被普遍需要的git。而 <em>xcode-select</em> 管理着xcode的 <em>developer directory</em> ，用户可以在多个xcode版本之间切换开发环境</p>
+<figure class="highlight plaintext"><figcaption><span>首先检查是否已安装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-select -p</span><br></pre></td></tr></table></figure>
+<p>如果未安装，终端应该会提提示进行安装，已安装则会根据安装方式不同返回以下路径</p>
+<figure class="highlight plaintext"><figcaption><span>通过Xcode安装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Applications/Xcode.app/Contents/Developer</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>通过命令行安装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Library/Developer/CommandLineTools</span><br></pre></td></tr></table></figure>
+<p>如果需要手动安装</p>
+<figure class="highlight plaintext"><figcaption><span>手动安装命令</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-select —-install</span><br></pre></td></tr></table></figure>
+
+<h2 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h2><p><a target="_blank" rel="noopener" href="https://brew.sh/">https://brew.sh/</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>macOS御用包管理器，开发必备。国内安装可能会遭遇网络问题，解决方案会一并给出。注意需要先装Xcode command line tools</p>
+<figure class="highlight plaintext"><figcaption><span>官方安装命令</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/zsh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</span><br></pre></td></tr></table></figure>
+<p>由于国内网络问题，如果出现time out或443之类的报错，最便捷的方法还是使用国内镜像进行安装：</p>
+<figure class="highlight plaintext"><figcaption><span>镜像安装命令</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&quot;</span><br></pre></td></tr></table></figure>
+<p>来源：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/111014448">Homebrew国内如何自动安装</a></p>
+<details class="note info no-icon"><summary><p>故障排查</p>
+</summary>
+<p>如果在<code>brew update</code>时遭遇以下报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Warning: No remote &#x27;origin&#x27; in /opt/homebrew/Library/Taps/homebrew/homebrew-cask, skipping update!</span><br><span class="line">Warning: No remote &#x27;origin&#x27; in /opt/homebrew/Library/Taps/homebrew/homebrew-core, skipping update!</span><br><span class="line">Warning: No remote &#x27;origin&#x27; in /opt/homebrew/Library/Taps/homebrew/homebrew-services, skipping update!</span><br><span class="line">Already up-to-date.</span><br></pre></td></tr></table></figure>
+<p>执行<code>brew -v</code>命令看看是不是有两个提示，你的 <em>homebrew-core</em> <em>homebrew-cask</em> 和 <em>homebrew-services</em> 目录被git认为不是一个安全的目录，需要手动添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global --add safe.directory your_homebrew-core_path</span><br><span class="line">git config --global --add safe.directory your_homebrew-cask_path</span><br><span class="line">git config --global --add safe.directory your_homebrew-services_path</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/cunkai/HomebrewCN/issues/I5A7RV">来源</a></p>
+
+</details>
+
+<h3 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h3><p>为了平时的正常使用，对Homebrew的四个组成部分进行换源<br><strong>brew</strong> Homebrew源码仓库</p>
+<figure class="highlight plaintext"><figcaption><span>查看brew.git当前源</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &quot;$(brew --repo)&quot; &amp;&amp; git remote -v</span><br><span class="line"># origin    https://github.com/Homebrew/brew.git (fetch)</span><br><span class="line"># origin    https://github.com/Homebrew/brew.git (push)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>设置brew.git为阿里源</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>重置brew.git为官方源</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git -C &quot;$(brew --repo)&quot; remote set-url origin https://github.com/Homebrew/brew.git</span><br></pre></td></tr></table></figure>
+<p><strong>brew-core</strong> Homebrew核心软件库</p>
+<figure class="highlight plaintext"><figcaption><span>查看homebrew-core.git当前源</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &quot;$(brew --repo homebrew/core)&quot; &amp;&amp; git remote -v</span><br><span class="line"># origin    https://github.com/Homebrew/homebrew-core.git (fetch)</span><br><span class="line"># origin    https://github.com/Homebrew/homebrew-core.git (push)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>设置homebrew-core.git为阿里源</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>重置homebrew-core.git为官方源</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://github.com/Homebrew/homebrew-core.git</span><br></pre></td></tr></table></figure>
+<p><strong>brew-bottles</strong> Homebrew预编译二进制软件包</p>
+<figure class="highlight plaintext"><figcaption><span>查看homebrew-bottles当前源</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $HOMEBREW_BOTTLE_DOMAIN</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>zsh设置homebrew-bottles.git为阿里源</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=http://mirrors.aliyun.com/homebrew/homebrew-bottles&#x27; &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><figcaption><span>bash设置homebrew-bottles.git为阿里源</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export HOMEBREW_BOTTLE_DOMAIN=http://mirrors.aliyun.com/homebrew/homebrew-bottles&#x27;</span> &gt;&gt; ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>重置homebrew-bottles.git为官方源</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 在.zshrc或.bash_profile中注释或删去HOMEBREW_BOTTLE_DOMAIN变量</span><br><span class="line"># export HOMEBREW_BOTTLE_DOMAIN=xxxxxxxxx</span><br></pre></td></tr></table></figure>
+<p><strong>brew-cask</strong> macOS应用和大型二进制文件</p>
+<figure class="highlight plaintext"><figcaption><span>查看homebrew-cask当前源</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &quot;$(brew --repo homebrew/cask)&quot; &amp;&amp; git remote -v</span><br><span class="line"># origin    https://github.com/Homebrew/homebrew-cask.git (fetch)</span><br><span class="line"># origin    https://github.com/Homebrew/homebrew-cask.git (push)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>设置homebrew-cask.git为阿里源</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin http://mirrors.aliyun.com/homebrew/homebrew-cask.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>重置homebrew-cask.git为官方源</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://github.com/Homebrew/homebrew-cask</span><br></pre></td></tr></table></figure>
+<details class="note info no-icon"><summary><p>源</p>
+</summary>
+<p><strong>官方源</strong><br><a target="_blank" rel="noopener" href="https://github.com/Homebrew/brew.git">https://github.com/Homebrew/brew.git</a><br><a target="_blank" rel="noopener" href="https://github.com/Homebrew/homebrew-core.git">https://github.com/Homebrew/homebrew-core.git</a><br><a target="_blank" rel="noopener" href="https://github.com/Homebrew/homebrew-cask.git">https://github.com/Homebrew/homebrew-cask.git</a><br><strong>阿里源</strong><br><a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/homebrew/brew.git">https://mirrors.aliyun.com/homebrew/brew.git</a><br><a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/homebrew/homebrew-core.git">https://mirrors.aliyun.com/homebrew/homebrew-core.git</a><br><a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/homebrew/homebrew-bottles">http://mirrors.aliyun.com/homebrew/homebrew-bottles</a><br><a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/homebrew/homebrew-cask.git">http://mirrors.aliyun.com/homebrew/homebrew-cask.git</a><br><strong>清华源</strong> <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/">help</a><br><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git">https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git</a><br><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git">https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git</a><br><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles">https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles</a><br><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git">https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git</a><br><strong>中科大源</strong><br><a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/brew.git">https://mirrors.ustc.edu.cn/brew.git</a><br><a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/homebrew-core.git">https://mirrors.ustc.edu.cn/homebrew-core.git</a><br><a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/homebrew-bottles">https://mirrors.ustc.edu.cn/homebrew-bottles</a><br><a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/homebrew-cask.git">https://mirrors.ustc.edu.cn/homebrew-cask.git</a></p>
+
+</details>
+
+<h2 id="Oh-My-Zsh"><a href="#Oh-My-Zsh" class="headerlink" title="Oh My Zsh"></a>Oh My Zsh</h2><p><a target="_blank" rel="noopener" href="https://ohmyz.sh/">官网</a> <a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki">Doc</a></p>
+<figure class="highlight plaintext"><figcaption><span>命令行安装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="iTerm2"><a href="#iTerm2" class="headerlink" title="iTerm2"></a>iTerm2</h2><p><a target="_blank" rel="noopener" href="https://iterm2.com/index.html">官网</a></p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plaintext"><figcaption><span>Homebrew安装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install iterm2</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h3 id="Powerlevel10k-主题配置"><a href="#Powerlevel10k-主题配置" class="headerlink" title="Powerlevel10k 主题配置"></a>Powerlevel10k 主题配置</h3><p><a target="_blank" rel="noopener" href="https://github.com/romkatv/powerlevel10k">Github</a></p>
+<h3 id="zsh-autosuggestions-自动补全"><a href="#zsh-autosuggestions-自动补全" class="headerlink" title="zsh-autosuggestions 自动补全"></a>zsh-autosuggestions 自动补全</h3><p><a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-autosuggestions">Github</a></p>
+<h3 id="zsh-syntax-highlighting-语法高亮"><a href="#zsh-syntax-highlighting-语法高亮" class="headerlink" title="zsh-syntax-highlighting 语法高亮"></a>zsh-syntax-highlighting 语法高亮</h3><p><a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-syntax-highlighting">Github</a></p>
+<h2 id="VS-Code"><a href="#VS-Code" class="headerlink" title="VS Code"></a>VS Code</h2><p>如果安装了额外字体用于iTerm主题，需要在vscode中添加对应字体以便在vscode的终端中达到同样显示效果<br>按<code>Command+,</code>打开vscode设置，搜索 <em>terminal.integrated.fontFamily</em> 配置项，添加iTerm中使用的字体(如p10k安装的’MesloLGS NF’)</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Setup-Macos/" rel="prev" title="Setup macOS">
+                  <i class="fa fa-chevron-left"></i> Setup macOS
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JK117</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
