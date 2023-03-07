@@ -30,7 +30,7 @@ defaults write .GlobalPreferences com.apple.mouse.scaling -1 # 禁用
 ```
 
 ### 禁用翻盖开机
-**推荐** 有时候想关机了清洁一下键盘，翻开盖子直接DUANG也会有点不方便
+**推荐** 有时候想关机了清洁一下键盘，翻开盖子直接DUANG也会有点不方便，本方法仅对Intel处理器的mac有效
 ```
 sudo nvram AutoBoot=%00 # 禁用
 ```
