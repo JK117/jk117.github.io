@@ -20,19 +20,19 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jk117.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="基于个人踩坑流程梳理的命令行终端安装及配置流程(国内的网啊)主要包含homebrew + Oh My Zsh + iTerm + VS Code配置">
+    <meta name="description" content="基于个人踩坑流程梳理的命令行终端安装及配置流程(国内的网啊)主要包含 Xcode Command Line Tools + Oh My Zsh + homebrew + iTerm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shell &amp; Terminal Setup">
 <meta property="og:url" content="https://jk117.github.io/Setup-Shell-Terminal/index.html">
 <meta property="og:site_name" content="Get Some Fries">
-<meta property="og:description" content="基于个人踩坑流程梳理的命令行终端安装及配置流程(国内的网啊)主要包含homebrew + Oh My Zsh + iTerm + VS Code配置">
+<meta property="og:description" content="基于个人踩坑流程梳理的命令行终端安装及配置流程(国内的网啊)主要包含 Xcode Command Line Tools + Oh My Zsh + homebrew + iTerm">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://jk117.github.io/Setup-Shell-Terminal/iterm_demo.png">
 <meta property="og:image" content="https://jk117.github.io/Setup-Shell-Terminal/iterm_hotkey.png">
 <meta property="og:image" content="https://jk117.github.io/Setup-Shell-Terminal/iterm_dedicated_config.png">
 <meta property="og:image" content="https://jk117.github.io/Setup-Shell-Terminal/iterm_dedicated_demo.png">
 <meta property="article:published_time" content="2023-02-27T16:12:42.000Z">
-<meta property="article:modified_time" content="2023-03-07T07:57:43.411Z">
+<meta property="article:modified_time" content="2023-03-20T08:15:27.789Z">
 <meta property="article:author" content="JK117">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jk117.github.io/Setup-Shell-Terminal/iterm_demo.png">
@@ -111,7 +111,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Xcode-Command-Line-Tools"><span class="nav-number">1.</span> <span class="nav-text">Xcode Command Line Tools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homebrew"><span class="nav-number">2.</span> <span class="nav-text">Homebrew</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%A2%E6%BA%90"><span class="nav-number">2.2.</span> <span class="nav-text">换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E5%AE%83"><span class="nav-number">2.3.</span> <span class="nav-text">其它</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oh-My-Zsh"><span class="nav-number">3.</span> <span class="nav-text">Oh My Zsh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iTerm2"><span class="nav-number">4.</span> <span class="nav-text">iTerm2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-1"><span class="nav-number">4.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">4.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Powerlevel10k-%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="nav-number">4.3.</span> <span class="nav-text">Powerlevel10k 主题配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zsh-autosuggestions-%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8"><span class="nav-number">4.4.</span> <span class="nav-text">zsh-autosuggestions 自动补全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zsh-syntax-highlighting-%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE"><span class="nav-number">4.5.</span> <span class="nav-text">zsh-syntax-highlighting 语法高亮</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Xcode-Command-Line-Tools"><span class="nav-number">1.</span> <span class="nav-text">Xcode Command Line Tools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oh-My-Zsh"><span class="nav-number">2.</span> <span class="nav-text">Oh My Zsh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homebrew"><span class="nav-number">3.</span> <span class="nav-text">Homebrew</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E5%AE%89%E8%A3%85"><span class="nav-number">3.1.</span> <span class="nav-text">设置代理安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E5%AE%89%E8%A3%85-%E6%8D%A2%E6%BA%90"><span class="nav-number">3.2.</span> <span class="nav-text">国内镜像安装+换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%A2%E6%BA%90"><span class="nav-number">3.3.</span> <span class="nav-text">换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E5%AE%83"><span class="nav-number">3.4.</span> <span class="nav-text">其它</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iTerm2"><span class="nav-number">4.</span> <span class="nav-text">iTerm2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">4.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">4.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Powerlevel10k-%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="nav-number">4.3.</span> <span class="nav-text">Powerlevel10k 主题配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zsh-autosuggestions-%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8"><span class="nav-number">4.4.</span> <span class="nav-text">zsh-autosuggestions 自动补全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zsh-syntax-highlighting-%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE"><span class="nav-number">4.5.</span> <span class="nav-text">zsh-syntax-highlighting 语法高亮</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -188,7 +188,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-03-07 07:57:43" itemprop="dateModified" datetime="2023-03-07T07:57:43+00:00">2023-03-07</time>
+      <time title="Modified: 2023-03-20 08:15:27" itemprop="dateModified" datetime="2023-03-20T08:15:27+00:00">2023-03-20</time>
     </span>
 
   
@@ -201,9 +201,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>基于个人踩坑流程梳理的命令行终端安装及配置流程(国内的网啊)<br>主要包含homebrew + Oh My Zsh + iTerm + VS Code配置</p>
+        <p>基于个人踩坑流程梳理的命令行终端安装及配置流程(国内的网啊)<br>主要包含 <strong>Xcode Command Line Tools</strong> + <strong>Oh My Zsh</strong> + <strong>homebrew</strong> + <strong>iTerm</strong> </p>
 <span id="more"></span>
-<p>注：从macOS Catalina开始，系统使用zsh作为默认登录shell和交互式shell</p>
+<p>注：从macOS Catalina开始，系统使用zsh作为默认登录shell和交互式shell。本篇所有流程中 <strong>Xcode Command Line Tools</strong> 必须最先安装，其余推荐安装顺序为 <strong>Oh My Zsh</strong> -&gt; <strong>homebrew</strong> -&gt; <strong>iTerm</strong> 。开始写了以后发现将所有内容写入一篇文章有点冗长，精炼和详细二者皆失。所以后续会把各个部分拆分为独立文章，并在此链接</p>
 <hr>
 <h2 id="Xcode-Command-Line-Tools"><a href="#Xcode-Command-Line-Tools" class="headerlink" title="Xcode Command Line Tools"></a>Xcode Command Line Tools</h2><p>XCLT包含有整个macOS的sdk，clang编译器，make等对于开发而言最基础的系统工具。而 <em>xcode-select</em> 管理着xcode的 <em>developer directory</em> ，用户可以在多个xcode版本之间切换开发环境</p>
 <figure class="highlight plaintext"><figcaption><span>首先检查是否已安装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-select -p</span><br></pre></td></tr></table></figure>
@@ -213,12 +213,17 @@
 <p>如果需要手动安装需要使用管理员权限，输入用户密码后确认安装</p>
 <figure class="highlight plaintext"><figcaption><span>手动安装命令</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xcode-select —-install</span><br></pre></td></tr></table></figure>
 
-<h2 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h2><p><a target="_blank" rel="noopener" href="https://brew.sh/">https://brew.sh/</a></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>macOS御用包管理器，开发必备。国内安装可能会遭遇网络问题，解决方案会一并给出。注意需要先装Xcode command line tools</p>
+<h2 id="Oh-My-Zsh"><a href="#Oh-My-Zsh" class="headerlink" title="Oh My Zsh"></a>Oh My Zsh</h2><p><a target="_blank" rel="noopener" href="https://ohmyz.sh/">官网</a> <a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki">Doc</a><br>由于国内网络问题，建议安装前关闭所有代理，并将DNS设为 <em>8.8.8.8</em></p>
+<figure class="highlight plaintext"><figcaption><span>命令行安装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</span><br></pre></td></tr></table></figure>
+<p>安装完成后用户目录下生成 <em>.zshrc</em> 文件，之后的shell配置都可以在其中进行。初始配置中有效的配置项仅有：<code>export ZSH=&quot;$HOME/.oh-my-zsh&quot;</code>，<code>ZSH_THEME=&quot;robbyrussell&quot;</code>，<code>plugins=(git)</code>， 以及<code>source $ZSH/oh-my-zsh.sh</code></p>
+<h2 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h2><p><a target="_blank" rel="noopener" href="https://brew.sh/">https://brew.sh/</a><br>macOS御用包管理器，开发必备。国内安装可能会遭遇网络问题，解决方案会一并给出。注意需要先装Xcode command line tools</p>
 <figure class="highlight bash"><figcaption><span>官方安装命令</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
-<p>由于国内网络问题，如果出现time out或443之类的报错，最便捷的方法还是使用国内镜像进行安装：</p>
-<figure class="highlight plaintext"><figcaption><span>镜像安装命令</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&quot;</span><br></pre></td></tr></table></figure>
-<p>由于权限管理方式不同，brew在ARM(Apple Silicon)和Intel机型上的安装位置不一样，Intel的在 <em>&#x2F;usr&#x2F;local&#x2F;Homebrew</em> 下，而ARM(M1&#x2F;M2)在 <em>&#x2F;opt&#x2F;Homebrew</em> 下，在配置和使用中可能需要注意区别<br>来源：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/111014448">Homebrew国内如何自动安装</a></p>
+<p>由于权限管理方式不同，brew在ARM(Apple Silicon)和Intel机型上的安装位置不一样，Intel的在 <em>&#x2F;usr&#x2F;local&#x2F;Homebrew</em> 下，而ARM(M1&#x2F;M2)在 <em>&#x2F;opt&#x2F;Homebrew</em> 下，在配置和使用中可能需要注意区别<br>此外因为国内网络问题，直接使用官方安装命令多半会出现time out或443之类的报错。在此有两种方案，一是设置Socks5+Http代理后安装(推荐，体验远优于换源)，二是使用国内镜像进行安装</p>
+<h3 id="设置代理安装"><a href="#设置代理安装" class="headerlink" title="设置代理安装"></a>设置代理安装</h3><p>这里要求已有可用的Http和Socks5代理端口。以ClashX为例，记录了面板设置中的混合代理端口(Mixed Proxy Port，默认7890)后，将以下命令写入当前命令行环境的配置文件</p>
+<figure class="highlight plaintext"><figcaption><span>~/.zshrc或~/.bash_profile</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export ALL_PROXY=socks5://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
+
+<h3 id="国内镜像安装-换源"><a href="#国内镜像安装-换源" class="headerlink" title="国内镜像安装+换源"></a>国内镜像安装+换源</h3><figure class="highlight plaintext"><figcaption><span>镜像安装命令</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&quot;</span><br></pre></td></tr></table></figure>
+<p>该脚本会直接使用国内镜像进行安装，并在过程中提供换源的选择，比较方便。如果想手动还原或重置源，可以参照后文换源部分<br>来源：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/111014448">Homebrew国内如何自动安装</a></p>
 <details class="note info no-icon"><summary><p>故障排查</p>
 </summary>
 <p>如果在<code>brew update</code>时遭遇以下报错</p>
@@ -253,14 +258,11 @@
 
 </details>
 
-<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><p>brew安装完成后建议用brew安装新的git替换原系统自带的git。在Ventura上</p>
-<h2 id="Oh-My-Zsh"><a href="#Oh-My-Zsh" class="headerlink" title="Oh My Zsh"></a>Oh My Zsh</h2><p><a target="_blank" rel="noopener" href="https://ohmyz.sh/">官网</a> <a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki">Doc</a><br>由于国内网络问题，建议安装前关闭所有代理，并将DNS设为 <em>8.8.8.8</em></p>
-<figure class="highlight plaintext"><figcaption><span>命令行安装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</span><br></pre></td></tr></table></figure>
-<p>安装完成后用户目录下生成 <em>.zshrc</em> 文件，之后的shell配置都可以在其中进行。初始配置中有效的配置项仅有：<code>export ZSH=&quot;$HOME/.oh-my-zsh&quot;</code>，<code>ZSH_THEME=&quot;robbyrussell&quot;</code>，<code>plugins=(git)</code>， 以及<code>source $ZSH/oh-my-zsh.sh</code></p>
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><p>brew安装完成后建议用brew安装新的git替换原系统自带的git(在Ventura上似乎会自动完成替换)</p>
 <h2 id="iTerm2"><a href="#iTerm2" class="headerlink" title="iTerm2"></a>iTerm2</h2><p><a target="_blank" rel="noopener" href="https://iterm2.com/index.html">官网</a><br>差生文具多，管我代码行不行，命令行终端逼格必须拉满，先上个效果图</p>
 <img src="/Setup-Shell-Terminal/iterm_demo.png" class="">
 
-<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plaintext"><figcaption><span>Homebrew安装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install iterm2</span><br></pre></td></tr></table></figure>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plaintext"><figcaption><span>Homebrew安装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install iterm2</span><br></pre></td></tr></table></figure>
 <p>完成安装后就可以和自带Terminal say goodbye了</p>
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>iTerm安装完成后已经可以开箱即用了，而且鉴于可进行的配置项相当多，建议有时间有心情了再去 <em>Settings</em> 中将各个选项卡浏览一遍已获得更好的个性化体验。在这里不展开具体的外观和功能配置，仅介绍几个个人觉得肥肠有用小技巧</p>
 <ol>
