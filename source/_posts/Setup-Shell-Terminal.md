@@ -6,9 +6,9 @@ tags:
 
 
 基于个人踩坑流程梳理的命令行终端安装及配置流程(国内的网啊)
-主要包含homebrew + Oh My Zsh + iTerm + VS Code配置
+主要包含 **Xcode Command Line Tools** + **Oh My Zsh** + **homebrew** + **iTerm** 
 <!--more-->
-注：从macOS Catalina开始，系统使用zsh作为默认登录shell和交互式shell
+注：从macOS Catalina开始，系统使用zsh作为默认登录shell和交互式shell。本篇所有流程中 **Xcode Command Line Tools** 必须最先安装，其余推荐安装顺序为 **Oh My Zsh** -> **homebrew** -> **iTerm** 。开始写了以后发现将所有内容写入一篇文章有点冗长，精炼和详细二者皆失。所以后续会把各个部分拆分为独立文章，并在此链接
 ***
 
 ## Xcode Command Line Tools
@@ -28,18 +28,35 @@ xcode-select -p
 sudo xcode-select —-install
 ```
 
+## Oh My Zsh
+[官网](https://ohmyz.sh/) [Doc](https://github.com/ohmyzsh/ohmyzsh/wiki)
+由于国内网络问题，建议安装前关闭所有代理，并将DNS设为 *8.8.8.8*
+```zsh 命令行安装
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+安装完成后用户目录下生成 *.zshrc* 文件，之后的shell配置都可以在其中进行。初始配置中有效的配置项仅有：`export ZSH="$HOME/.oh-my-zsh"`，`ZSH_THEME="robbyrussell"`，`plugins=(git)`， 以及`source $ZSH/oh-my-zsh.sh`
+
+
 ## Homebrew
 [https://brew.sh/](https://brew.sh/)
-### 安装
 macOS御用包管理器，开发必备。国内安装可能会遭遇网络问题，解决方案会一并给出。注意需要先装Xcode command line tools
 ```bash 官方安装命令
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-由于国内网络问题，如果出现time out或443之类的报错，最便捷的方法还是使用国内镜像进行安装：
+由于权限管理方式不同，brew在ARM(Apple Silicon)和Intel机型上的安装位置不一样，Intel的在 */usr/local/Homebrew* 下，而ARM(M1/M2)在 */opt/Homebrew* 下，在配置和使用中可能需要注意区别
+此外因为国内网络问题，直接使用官方安装命令多半会出现time out或443之类的报错。在此有两种方案，一是设置Socks5+Http代理后安装(推荐，体验远优于换源)，二是使用国内镜像进行安装
+
+### 设置代理安装
+这里要求已有可用的Http和Socks5代理端口。以ClashX为例，记录了面板设置中的混合代理端口(Mixed Proxy Port，默认7890)后，将以下命令写入当前命令行环境的配置文件
+``` zsh ~/.zshrc或~/.bash_profile
+export ALL_PROXY=socks5://127.0.0.1:7890
+```
+
+### 国内镜像安装+换源
 ```zsh 镜像安装命令
 /bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
 ```
-由于权限管理方式不同，brew在ARM(Apple Silicon)和Intel机型上的安装位置不一样，Intel的在 */usr/local/Homebrew* 下，而ARM(M1/M2)在 */opt/Homebrew* 下，在配置和使用中可能需要注意区别
+该脚本会直接使用国内镜像进行安装，并在过程中提供换源的选择，比较方便。如果想手动还原或重置源，可以参照后文换源部分
 来源：[Homebrew国内如何自动安装](https://zhuanlan.zhihu.com/p/111014448)
 
 {% note info no-icon 故障排查 %}
@@ -139,15 +156,8 @@ git -C "$(brew --repo homebrew/cask)" remote set-url origin https://github.com/H
 {% endnote %}
 
 ### 其它
-brew安装完成后建议用brew安装新的git替换原系统自带的git。在Ventura上
+brew安装完成后建议用brew安装新的git替换原系统自带的git(在Ventura上似乎会自动完成替换)
 
-## Oh My Zsh
-[官网](https://ohmyz.sh/) [Doc](https://github.com/ohmyzsh/ohmyzsh/wiki)
-由于国内网络问题，建议安装前关闭所有代理，并将DNS设为 *8.8.8.8*
-```zsh 命令行安装
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-安装完成后用户目录下生成 *.zshrc* 文件，之后的shell配置都可以在其中进行。初始配置中有效的配置项仅有：`export ZSH="$HOME/.oh-my-zsh"`，`ZSH_THEME="robbyrussell"`，`plugins=(git)`， 以及`source $ZSH/oh-my-zsh.sh`
 
 ## iTerm2
 [官网](https://iterm2.com/index.html)
