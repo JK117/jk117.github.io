@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://jk117.github.io/Setup-Shell-Terminal/iterm_dedicated_config.png">
 <meta property="og:image" content="https://jk117.github.io/Setup-Shell-Terminal/iterm_dedicated_demo.png">
 <meta property="article:published_time" content="2023-02-27T16:12:42.000Z">
-<meta property="article:modified_time" content="2023-03-21T03:22:31.912Z">
+<meta property="article:modified_time" content="2023-03-21T06:32:31.919Z">
 <meta property="article:author" content="JK117">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jk117.github.io/Setup-Shell-Terminal/clashx_proxy.png">
@@ -189,7 +189,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-03-21 03:22:31" itemprop="dateModified" datetime="2023-03-21T03:22:31+00:00">2023-03-21</time>
+      <time title="Modified: 2023-03-21 06:32:31" itemprop="dateModified" datetime="2023-03-21T06:32:31+00:00">2023-03-21</time>
     </span>
 
   
@@ -204,9 +204,8 @@
     <div class="post-body" itemprop="articleBody">
         <p>基于个人踩坑流程梳理的命令行终端安装及配置流程(国内的网啊)<br>主要包含 Xcode Command Line Tools + Oh My Zsh + homebrew + iTerm</p>
 <span id="more"></span>
-<p>注：从macOS Catalina开始，系统使用zsh作为默认登录shell和交互式shell</p>
+<p>注：从macOS Catalina开始，系统使用zsh作为默认登录shell和交互式shell<br>本篇所有流程中 <strong>Xcode Command Line Tools</strong> 必须最先安装，其余推荐配置顺序为<br><strong>代理配置</strong> -&gt; <strong>Oh My Zsh</strong> -&gt; <strong>homebrew</strong> -&gt; <strong>iTerm</strong><br>开始写了以后发现将所有内容写入一篇文章有点冗长，精炼和详细二者皆失。所以后续会把各个部分拆分为独立文章，并在此链接</p>
 <!-- <a href="/Xcode-Cmd-Line-Tools/" title="Xcode Command Line Tools">Xcode Command Line Tools</a> -->
-<p>本篇所有流程中 <strong>Xcode Command Line Tools</strong> 必须最先安装，其余推荐配置顺序为<br><strong>代理配置</strong> -&gt; <strong>Oh My Zsh</strong> -&gt; <strong>homebrew</strong> -&gt; <strong>iTerm</strong><br>开始写了以后发现将所有内容写入一篇文章有点冗长，精炼和详细二者皆失。所以后续会把各个部分拆分为独立文章，并在此链接</p>
 <hr>
 <h2 id="Xcode-Command-Line-Tools"><a href="#Xcode-Command-Line-Tools" class="headerlink" title="Xcode Command Line Tools"></a>Xcode Command Line Tools</h2><p>XCLT包含有整个macOS的sdk，clang编译器，make等对于开发而言最基础的系统工具。而 <em>xcode-select</em> 管理着xcode的 <em>developer directory</em> ，用户可以在多个xcode版本之间切换开发环境</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-select -p <span class="comment">#检查是否已安装</span></span><br></pre></td></tr></table></figure>
@@ -218,7 +217,7 @@
 
 <h2 id="代理配置"><a href="#代理配置" class="headerlink" title="代理配置"></a>代理配置</h2><p>由于国内网络问题，直接使用官方方法安装 Oh My Zsh 和 Homebrew 大概率会失败。解决方法有很多种，如国内镜像脚本安装、换源等等。单个人倾向于直接主要使用代理，因此先配置一个可用的代理是很有必要的。我的方案是 ClashX + 自建ss，代理配置不详细展开，这里的重点是记录配置后的代理端口</p>
 <img src="/Setup-Shell-Terminal/clashx_proxy.png" class="">
-<p>ClashX的一个优势是可以混合http和socks5的代理端口，我们可以不用区分所使用的工具到底用的到底是http&#x2F;https(如pip)，还是其它协议，无脑往一个端口塞就行。ClashX默认的混合代理端口是7890，在当前终端的配置文件中加入</p>
+<p>ClashX的一个优势是可以混合http和socks5的代理端口，我们可以不用区分所使用的工具到底用的到底是不是http&#x2F;https，无脑往一个端口塞就行。理论上讲肯定是不好的行为，但暂时还没明显问题，后续因为这个踩到坑了再回来补充说明。ClashX默认的混合代理端口是7890，在当前终端的配置文件中加入</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> ALL_PROXY=socks5://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
 <p>如果还没有终端的配置文件，可以直接新建</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> ~/.zshrc <span class="comment">#zsh</span></span><br></pre></td></tr></table></figure>
@@ -226,7 +225,7 @@
 <p>如果是其他区分Http和Socks5端口的工具，这里也先选用Socks5的代理端口以便git和brew使用</p>
 <h2 id="Oh-My-Zsh"><a href="#Oh-My-Zsh" class="headerlink" title="Oh My Zsh"></a>Oh My Zsh</h2><p><a target="_blank" rel="noopener" href="https://ohmyz.sh/">官网</a> <a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki">Doc</a><br>在国内建议打开socks5代理进行安装。如果对于网络有自信，可以尝试关闭所有代理，并将DNS设为 <em>8.8.8.8</em> 进行安装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>&quot;</span> <span class="comment">#命令行安装</span></span><br></pre></td></tr></table></figure>
-<p>安装完成后用户目录下生成 <em>.zshrc</em> 文件，之后的shell配置都可以在其中进行。初始配置中有效的配置项仅有</p>
+<p>安装完成后用户目录下生成 <em>.zshrc</em> 文件，之后的shell配置都可以在其中进行。如果在这之前已经自写了 <em>.zshrc</em> ，旧文件会被覆盖为 <em>.zshrc-old</em> ，所以需要把之前写过的配置重新写入新 <em>.zshrc</em> 。初始配置中有效的配置项仅有</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> ZSH=<span class="string">&quot;<span class="variable">$HOME</span>/.oh-my-zsh&quot;</span></span><br><span class="line">ZSH_THEME=<span class="string">&quot;robbyrussell&quot;</span></span><br><span class="line">plugins=(git)</span><br><span class="line"><span class="built_in">source</span> <span class="variable">$ZSH</span>/oh-my-zsh.sh</span><br></pre></td></tr></table></figure>
 <p>主题和插件等事项建议在装完iTerm之后再进一步配置</p>
 <h2 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h2><p><a target="_blank" rel="noopener" href="https://brew.sh/">https://brew.sh/</a><br>macOS御用包管理器，开发必备。要求先装Xcode command line tools<br>由于权限管理方式不同，brew在ARM(Apple Silicon)和Intel机型上的安装位置不一样，Intel的在 <em>&#x2F;usr&#x2F;local&#x2F;Homebrew</em> 下，而ARM(M1&#x2F;M2)在 <em>&#x2F;opt&#x2F;Homebrew</em> 下，在配置和使用中可能需要注意区别<br>此外因为国内网络问题，直接使用官方安装命令多半会出现time out或443之类的报错。在此有两种方案，一是设置socks5代理安装(推荐，体验远优于换源)，二是使用国内镜像进行安装</p>
