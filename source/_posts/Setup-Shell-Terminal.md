@@ -6,131 +6,160 @@ tags:
 
 
 基于个人踩坑流程梳理的命令行终端安装及配置流程(国内的网啊)
-主要包含 **Xcode Command Line Tools** + **Oh My Zsh** + **homebrew** + **iTerm** 
+主要包含 Xcode Command Line Tools + Oh My Zsh + homebrew + iTerm
 <!--more-->
-注：从macOS Catalina开始，系统使用zsh作为默认登录shell和交互式shell。本篇所有流程中 **Xcode Command Line Tools** 必须最先安装，其余推荐安装顺序为 **Oh My Zsh** -> **homebrew** -> **iTerm** 。开始写了以后发现将所有内容写入一篇文章有点冗长，精炼和详细二者皆失。所以后续会把各个部分拆分为独立文章，并在此链接
+注：从macOS Catalina开始，系统使用zsh作为默认登录shell和交互式shell
+<!-- {% post_link Xcode-Cmd-Line-Tools 'Xcode Command Line Tools'%} -->
+本篇所有流程中 **Xcode Command Line Tools** 必须最先安装，其余推荐配置顺序为
+**代理配置** -> **Oh My Zsh** -> **homebrew** -> **iTerm**
+开始写了以后发现将所有内容写入一篇文章有点冗长，精炼和详细二者皆失。所以后续会把各个部分拆分为独立文章，并在此链接
 ***
 
 ## Xcode Command Line Tools
 XCLT包含有整个macOS的sdk，clang编译器，make等对于开发而言最基础的系统工具。而 *xcode-select* 管理着xcode的 *developer directory* ，用户可以在多个xcode版本之间切换开发环境
-```zsh 首先检查是否已安装
-xcode-select -p
+```bash
+xcode-select -p #检查是否已安装
 ```
 如果未安装，终端有时会提提示进行安装，已安装则会根据安装方式不同返回以下路径
-```zsh 通过Xcode安装
-/Applications/Xcode.app/Contents/Developer
+```bash
+# 已通过Xcode安装
+# /Applications/Xcode.app/Contents/Developer
 ```
-```zsh 通过命令行安装
-/Library/Developer/CommandLineTools
+```bash
+# 已通过命令行安装
+# /Library/Developer/CommandLineTools
 ```
 如果需要手动安装需要使用管理员权限，输入用户密码后确认安装
-```zsh 手动安装命令
-sudo xcode-select —-install
+```bash
+sudo xcode-select --install #手动安装
 ```
+
+## 代理配置
+由于国内网络问题，直接使用官方方法安装 Oh My Zsh 和 Homebrew 大概率会失败。解决方法有很多种，如国内镜像脚本安装、换源等等。单个人倾向于直接主要使用代理，因此先配置一个可用的代理是很有必要的。我的方案是 ClashX + 自建ss，代理配置不详细展开，这里的重点是记录配置后的代理端口
+{% asset_img clashx_proxy.png %}
+ClashX的一个优势是可以混合http和socks5的代理端口，我们可以不用区分所使用的工具到底用的到底是http/https(如pip)，还是其它协议，无脑往一个端口塞就行。ClashX默认的混合代理端口是7890，在当前终端的配置文件中加入
+```bash
+export ALL_PROXY=socks5://127.0.0.1:7890
+```
+如果还没有终端的配置文件，可以直接新建
+```bash
+touch ~/.zshrc #zsh
+```
+```bash
+touch ~/.bash_profile #bash
+```
+如果是其他区分Http和Socks5端口的工具，这里也先选用Socks5的代理端口以便git和brew使用
 
 ## Oh My Zsh
 [官网](https://ohmyz.sh/) [Doc](https://github.com/ohmyzsh/ohmyzsh/wiki)
-由于国内网络问题，建议安装前关闭所有代理，并将DNS设为 *8.8.8.8*
-```zsh 命令行安装
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+在国内建议打开socks5代理进行安装。如果对于网络有自信，可以尝试关闭所有代理，并将DNS设为 *8.8.8.8* 进行安装
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" #命令行安装
 ```
-安装完成后用户目录下生成 *.zshrc* 文件，之后的shell配置都可以在其中进行。初始配置中有效的配置项仅有：`export ZSH="$HOME/.oh-my-zsh"`，`ZSH_THEME="robbyrussell"`，`plugins=(git)`， 以及`source $ZSH/oh-my-zsh.sh`
-
+安装完成后用户目录下生成 *.zshrc* 文件，之后的shell配置都可以在其中进行。初始配置中有效的配置项仅有
+```bash
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
+```
+主题和插件等事项建议在装完iTerm之后再进一步配置
 
 ## Homebrew
 [https://brew.sh/](https://brew.sh/)
-macOS御用包管理器，开发必备。国内安装可能会遭遇网络问题，解决方案会一并给出。注意需要先装Xcode command line tools
-```bash 官方安装命令
+macOS御用包管理器，开发必备。要求先装Xcode command line tools
+由于权限管理方式不同，brew在ARM(Apple Silicon)和Intel机型上的安装位置不一样，Intel的在 */usr/local/Homebrew* 下，而ARM(M1/M2)在 */opt/Homebrew* 下，在配置和使用中可能需要注意区别
+此外因为国内网络问题，直接使用官方安装命令多半会出现time out或443之类的报错。在此有两种方案，一是设置socks5代理安装(推荐，体验远优于换源)，二是使用国内镜像进行安装
+
+### 代理安装
+按照之前章节打开socks5代理后，直接使用官方安装即可
+```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-由于权限管理方式不同，brew在ARM(Apple Silicon)和Intel机型上的安装位置不一样，Intel的在 */usr/local/Homebrew* 下，而ARM(M1/M2)在 */opt/Homebrew* 下，在配置和使用中可能需要注意区别
-此外因为国内网络问题，直接使用官方安装命令多半会出现time out或443之类的报错。在此有两种方案，一是设置Socks5+Http代理后安装(推荐，体验远优于换源)，二是使用国内镜像进行安装
 
-### 设置代理安装
-这里要求已有可用的Http和Socks5代理端口。以ClashX为例，记录了面板设置中的混合代理端口(Mixed Proxy Port，默认7890)后，将以下命令写入当前命令行环境的配置文件
-``` zsh ~/.zshrc或~/.bash_profile
-export ALL_PROXY=socks5://127.0.0.1:7890
-```
-
-### 国内镜像安装+换源
-```zsh 镜像安装命令
+### 镜像安装
+使用大佬分享的gitee镜像安装可以规避网络问题，安装过程中集成了换源选项
+```bash
 /bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
 ```
-该脚本会直接使用国内镜像进行安装，并在过程中提供换源的选择，比较方便。如果想手动还原或重置源，可以参照后文换源部分
+如果想手动换源或重置源，可以参照后文换源部分
 来源：[Homebrew国内如何自动安装](https://zhuanlan.zhihu.com/p/111014448)
 
-{% note info no-icon 故障排查 %}
-如果在`brew update`时遭遇以下报错
-```zsh
+### 验证&故障排查
+安装后如果能正常使用`brew update`则pass，如果遭遇以下报错(镜像安装大概率会遇到)
+```bash
 Warning: No remote 'origin' in /opt/homebrew/Library/Taps/homebrew/homebrew-cask, skipping update!
 Warning: No remote 'origin' in /opt/homebrew/Library/Taps/homebrew/homebrew-core, skipping update!
 Warning: No remote 'origin' in /opt/homebrew/Library/Taps/homebrew/homebrew-services, skipping update!
 Already up-to-date.
 ```
 执行`brew -v`命令看看是不是有两个提示，你的 *homebrew-core* *homebrew-cask* 和 *homebrew-services* 目录被git认为不是一个安全的目录，需要手动添加，且intel和arm机型上路径不一样注意区别
-```zsh Intel Mac
+{% note info no-icon Intel Mac %}
+```bash
 git config --global --add safe.directory /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core
 git config --global --add safe.directory /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask
 git config --global --add safe.directory /usr/local/Homebrew/Library/Taps/homebrew/homebrew-services
 ```
-```zsh Arm Mac(Apple Silicon M1/M2)
+{% endnote %}
+{% note info no-icon Arm Mac(Apple Silicon M1/M2) %}
+```bash
 git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-core
 git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-cask
 git config --global --add safe.directory /opt/homebrew/Library/Taps/homebrew/homebrew-services
 ```
-[来源](https://gitee.com/cunkai/HomebrewCN/issues/I5A7RV)
 {% endnote %}
+[来源](https://gitee.com/cunkai/HomebrewCN/issues/I5A7RV)
 
 ### 换源
 为了平时的正常使用，对Homebrew的四个组成部分进行换源
 **brew** Homebrew源码仓库
-```zsh 查看brew.git当前源
+```bash 查看brew.git当前源
 cd "$(brew --repo)" && git remote -v
 # origin    https://github.com/Homebrew/brew.git (fetch)
 # origin    https://github.com/Homebrew/brew.git (push)
 ```
-```zsh 设置brew.git为阿里源
+```bash 设置brew.git为阿里源
 git -C "$(brew --repo)" remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git
 ```
-```zsh 重置brew.git为官方源
+```bash 重置brew.git为官方源
 git -C "$(brew --repo)" remote set-url origin https://github.com/Homebrew/brew.git
 ```
 **brew-core** Homebrew核心软件库
-```zsh 查看homebrew-core.git当前源
+```bash 查看homebrew-core.git当前源
 cd "$(brew --repo homebrew/core)" && git remote -v
 # origin    https://github.com/Homebrew/homebrew-core.git (fetch)
 # origin    https://github.com/Homebrew/homebrew-core.git (push)
 ```
-```zsh 设置homebrew-core.git为阿里源
+```bash 设置homebrew-core.git为阿里源
 git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git
 ```
-```zsh 重置homebrew-core.git为官方源
+```bash 重置homebrew-core.git为官方源
 git -C "$(brew --repo homebrew/core)" remote set-url origin https://github.com/Homebrew/homebrew-core.git
 ```
 **brew-bottles** Homebrew预编译二进制软件包
-```zsh 查看homebrew-bottles当前源
+```bash 查看homebrew-bottles当前源
 echo $HOMEBREW_BOTTLE_DOMAIN
 ```
-```zsh zsh设置homebrew-bottles.git为阿里源
+```bash zsh设置homebrew-bottles.git为阿里源
 echo 'export HOMEBREW_BOTTLE_DOMAIN=http://mirrors.aliyun.com/homebrew/homebrew-bottles' >> ~/.zshrc
 ```
 ```bash bash设置homebrew-bottles.git为阿里源
 echo 'export HOMEBREW_BOTTLE_DOMAIN=http://mirrors.aliyun.com/homebrew/homebrew-bottles' >> ~/.bash_profile
 ```
-```zsh 重置homebrew-bottles.git为官方源
+```bash 重置homebrew-bottles.git为官方源
 # 在.zshrc或.bash_profile中注释或删去HOMEBREW_BOTTLE_DOMAIN变量
 # export HOMEBREW_BOTTLE_DOMAIN=xxxxxxxxx
 ```
 **brew-cask** macOS应用和大型二进制文件
-```zsh 查看homebrew-cask当前源
+```bash 查看homebrew-cask当前源
 cd "$(brew --repo homebrew/cask)" && git remote -v
 # origin    https://github.com/Homebrew/homebrew-cask.git (fetch)
 # origin    https://github.com/Homebrew/homebrew-cask.git (push)
 ```
-```zsh 设置homebrew-cask.git为阿里源
+```bash 设置homebrew-cask.git为阿里源
 git -C "$(brew --repo homebrew/cask)" remote set-url origin http://mirrors.aliyun.com/homebrew/homebrew-cask.git
 ```
-```zsh 重置homebrew-cask.git为官方源
+```bash 重置homebrew-cask.git为官方源
 git -C "$(brew --repo homebrew/cask)" remote set-url origin https://github.com/Homebrew/homebrew-cask
 ```
 {% note info no-icon 可选源 %}
