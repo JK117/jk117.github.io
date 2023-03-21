@@ -9,10 +9,10 @@ tags:
 主要包含 Xcode Command Line Tools + Oh My Zsh + homebrew + iTerm
 <!--more-->
 注：从macOS Catalina开始，系统使用zsh作为默认登录shell和交互式shell
-<!-- {% post_link Xcode-Cmd-Line-Tools 'Xcode Command Line Tools'%} -->
 本篇所有流程中 **Xcode Command Line Tools** 必须最先安装，其余推荐配置顺序为
 **代理配置** -> **Oh My Zsh** -> **homebrew** -> **iTerm**
 开始写了以后发现将所有内容写入一篇文章有点冗长，精炼和详细二者皆失。所以后续会把各个部分拆分为独立文章，并在此链接
+<!-- {% post_link Xcode-Cmd-Line-Tools 'Xcode Command Line Tools'%} -->
 ***
 
 ## Xcode Command Line Tools
@@ -37,7 +37,7 @@ sudo xcode-select --install #手动安装
 ## 代理配置
 由于国内网络问题，直接使用官方方法安装 Oh My Zsh 和 Homebrew 大概率会失败。解决方法有很多种，如国内镜像脚本安装、换源等等。单个人倾向于直接主要使用代理，因此先配置一个可用的代理是很有必要的。我的方案是 ClashX + 自建ss，代理配置不详细展开，这里的重点是记录配置后的代理端口
 {% asset_img clashx_proxy.png %}
-ClashX的一个优势是可以混合http和socks5的代理端口，我们可以不用区分所使用的工具到底用的到底是http/https(如pip)，还是其它协议，无脑往一个端口塞就行。ClashX默认的混合代理端口是7890，在当前终端的配置文件中加入
+ClashX的一个优势是可以混合http和socks5的代理端口，我们可以不用区分所使用的工具到底用的到底是不是http/https，无脑往一个端口塞就行。理论上讲肯定是不好的行为，但暂时还没明显问题，后续因为这个踩到坑了再回来补充说明。ClashX默认的混合代理端口是7890，在当前终端的配置文件中加入
 ```bash
 export ALL_PROXY=socks5://127.0.0.1:7890
 ```
@@ -56,7 +56,7 @@ touch ~/.bash_profile #bash
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" #命令行安装
 ```
-安装完成后用户目录下生成 *.zshrc* 文件，之后的shell配置都可以在其中进行。初始配置中有效的配置项仅有
+安装完成后用户目录下生成 *.zshrc* 文件，之后的shell配置都可以在其中进行。如果在这之前已经自写了 *.zshrc* ，旧文件会被覆盖为 *.zshrc-old* ，所以需要把之前写过的配置重新写入新 *.zshrc* 。初始配置中有效的配置项仅有
 ```bash
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
