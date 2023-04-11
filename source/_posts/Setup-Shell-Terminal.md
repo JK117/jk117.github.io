@@ -56,7 +56,7 @@ touch ~/.bash_profile #bash
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" #命令行安装
 ```
-安装完成后用户目录下生成 *.zshrc* 文件，之后的shell配置都可以在其中进行。如果在这之前已经自写了 *.zshrc* ，旧文件会被覆盖为 *.zshrc-old* ，所以需要把之前写过的配置重新写入新 *.zshrc* 。初始配置中有效的配置项仅有
+安装完成后用户目录下生成 *.zshrc* 文件，之后的shell配置都可以在其中进行。如果在这之前已经自写了 *.zshrc* ，旧文件中的内容会被写入 *.zshrc.pre-oh-my-zsh* 作为备份，所以需要把之前写过的配置重新写入新 *.zshrc* 。初始配置中有效的配置项仅有
 ```bash
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
@@ -66,7 +66,7 @@ source $ZSH/oh-my-zsh.sh
 主题和插件等事项建议在装完iTerm之后再进一步配置
 
 ## Homebrew
-[https://brew.sh/](https://brew.sh/)
+[官网](https://brew.sh/)
 macOS御用包管理器，开发必备。要求先装Xcode command line tools
 由于权限管理方式不同，brew在ARM(Apple Silicon)和Intel机型上的安装位置不一样，Intel的在 */usr/local/Homebrew* 下，而ARM(M1/M2)在 */opt/Homebrew* 下，在配置和使用中可能需要注意区别
 此外因为国内网络问题，直接使用官方安装命令多半会出现time out或443之类的报错。在此有两种方案，一是设置socks5代理安装(推荐，体验远优于换源)，二是使用国内镜像进行安装
