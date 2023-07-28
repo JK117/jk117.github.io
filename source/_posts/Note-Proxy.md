@@ -62,8 +62,6 @@ export HTTP_PROXY=http://xx.xx.xx.xx:1234
 ## 应用配置
 ### brew
 brew支持全局代理，通过在环境变量中设置 all_proxy 代理端口，并在代理软件中启用同样的协议和端口
-- 代理软件指定socks5代理端口号后开启系统代理
-- 
 ```bash
 export all_proxy=socks5://127.0.0.1:7890    # Clash默认混合端口
 ```
