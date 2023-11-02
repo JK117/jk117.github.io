@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://jk117.github.io/Setup-Shell-Terminal/iterm_dedicated_config.png">
 <meta property="og:image" content="https://jk117.github.io/Setup-Shell-Terminal/iterm_dedicated_demo.png">
 <meta property="article:published_time" content="2023-02-27T16:12:42.000Z">
-<meta property="article:modified_time" content="2023-11-02T02:28:46.144Z">
+<meta property="article:modified_time" content="2023-11-02T03:37:18.197Z">
 <meta property="article:author" content="JK117">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jk117.github.io/Setup-Shell-Terminal/clashx_proxy.png">
@@ -193,7 +193,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-11-02 02:28:46" itemprop="dateModified" datetime="2023-11-02T02:28:46+00:00">2023-11-02</time>
+      <time title="Modified: 2023-11-02 03:37:18" itemprop="dateModified" datetime="2023-11-02T03:37:18+00:00">2023-11-02</time>
     </span>
 
   
@@ -220,12 +220,14 @@
 
 <h2 id="代理配置"><a href="#代理配置" class="headerlink" title="代理配置"></a>代理配置</h2><p>由于国内网络问题，直接使用官方方法安装 Oh My Zsh 和 Homebrew 大概率会失败。解决方法有很多种，如国内镜像脚本安装、换源等等。单个人倾向于直接主要使用代理，因此先配置一个可用的代理是很有必要的。我日常使用ClashX开启代理，具体配置不详细展开，这里的重点是记录配置后的代理端口</p>
 <img src="/Setup-Shell-Terminal/clashx_proxy.png" class="">
-<p>ClashX的一个优势是可以混合http和socks5的代理端口，我们可以不用区分所使用的工具到底用的到底是不是http&#x2F;https，无脑往一个端口塞就行。理论上讲肯定是不好的行为，但暂时还没明显问题，后续因为这个踩到坑了再回来补充说明。ClashX默认的混合代理端口是7890，在当前终端的配置文件中加入</p>
+<p>ClashX的一个优势是可以混合http和socks5的代理端口，大部分情况下我们可以不用区分所使用的工具到底在使用什么协议，直接往一个端口塞就行。ClashX默认的混合代理端口是7890，在当前终端的配置文件中加入：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export ALL_PROXY=socks5://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
+<p>有些工具不支持<code>ALL_PROXY</code>这个字段，或者会区分大小写，这里建议补全大小写和HTTP代理的相关字段：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export ALL_PROXY=socks5://127.0.0.1:7890</span><br><span class="line">export all_proxy=socks5://127.0.0.1:7890</span><br><span class="line">export HTTP_PROXY=socks5://127.0.0.1:7890</span><br><span class="line">export http_proxy=socks5://127.0.0.1:7890</span><br><span class="line">export HTTPS_PROXY=socks5://127.0.0.1:7890</span><br><span class="line">export https_proxy=socks5://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
 <p>如果还没有终端的配置文件，可以直接新建</p>
 <figure class="highlight plaintext"><figcaption><span>zsh</span></figcaption><table><tr><td class="code"><pre><span class="line">touch ~/.zshrc</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><figcaption><span>bash</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> ~/.bash_profile</span><br></pre></td></tr></table></figure>
-<p>如果是其他区分Http和Socks5端口的工具，这里也先选用Socks5的代理端口以便git和brew使用</p>
+
 <h2 id="Oh-My-Zsh"><a href="#Oh-My-Zsh" class="headerlink" title="Oh My Zsh"></a>Oh My Zsh</h2><p><a target="_blank" rel="noopener" href="https://ohmyz.sh/">官网</a> <a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki">Doc</a><br>在国内建议打开socks5代理进行安装。如果不行的话可以尝试关闭所有代理，注释掉 <em>.zshrc</em> 中相关的proxy字段，并将DNS设为 <code>8.8.8.8</code> 进行安装</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot; #命令行安装</span><br></pre></td></tr></table></figure>
 <p>安装完成后用户目录下生成 <em>.zshrc</em> 文件，之后的shell配置都可以在其中进行。如果在这之前已经自写了 <em>.zshrc</em> ，旧文件中的内容会被写入 <em>.zshrc.pre-oh-my-zsh</em> 作为备份，所以需要把之前写过的配置重新写入新 <em>.zshrc</em> 。初始配置如下</p>
@@ -291,13 +293,13 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $&#123;ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom&#125;/themes/powerlevel10k</span><br></pre></td></tr></table></figure>
 <p>克隆完成后在 <em>.zshrc</em> 中修改主题</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ZSH_THEME=&quot;powerlevel10k/powerlevel10k&quot;</span><br></pre></td></tr></table></figure>
-<p>保存，终端会自动提示开始选择配置，如果没有自动提示，或者想重新覆写配置，可以通过<code>p10k configure</code>指令进行<br>p10k使用 <em>MesloLGS NF</em> 字体，配置过程中会提示询问是否安装，墙裂建议安装。并在配置完成后在 <em>iTerm Settings - Profiles - Text</em> 中将 <em>Font</em> 设置为 <em>MES咯LGS NF</em> 。如果使用vscode的话，也需要在vscode设置中修改 <em>terminal.integrated.fontFamily</em> 配置项，添加 <em>‘MesloLGS NF’</em><br>另外在 <em>.zshrc</em> 中也有针对zsh主题的配置字段 <em>ZSH_THEME(默认为robbyrussell)</em> ，注释掉以防冲突</p>
+<p>保存，终端会自动提示开始选择配置，如果没有自动提示，或者想重新覆写配置，可以通过<code>p10k configure</code>指令进行<br>p10k使用MesloLGS NF字体，配置过程中会提示询问是否安装，墙裂建议安装。并在配置完成后在 <em>iTerm Settings - Profiles - Text</em> 中将 <em>Font</em> 设置为 <code>MESLOLGS NF</code> 。如果使用vscode的话，也需要在vscode设置中修改 <code>terminal.integrated.fontFamily</code> 配置项，添加 <code>&#39;MesloLGS NF&#39;</code></p>
 <h3 id="zsh-autosuggestions-自动补全"><a href="#zsh-autosuggestions-自动补全" class="headerlink" title="zsh-autosuggestions 自动补全"></a>zsh-autosuggestions 自动补全</h3><p><a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-autosuggestions">Github</a><br>zsh的自动填充插件，实现Tab一时爽，一直Tab一直爽。Github主页给出了文档及安装说明，鉴于已经安装了Oh My Zsh，最简便的插件安装方式是直接clone到 <em>.oh-my-zsh&#x2F;custom&#x2F;plugins</em> 目录下</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/zsh-users/zsh-autosuggestions $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
-<p>然后plugin manager载入，即在 <em>~&#x2F;.zshrc</em> 的 <em>plugins</em> 中添加 <em>zsh-autosuggestions</em></p>
+<p>然后plugin manager载入，即在 <em>~&#x2F;.zshrc</em> 的 <code>plugins</code> 中添加 <code>zsh-autosuggestions</code></p>
 <h3 id="zsh-syntax-highlighting-语法高亮"><a href="#zsh-syntax-highlighting-语法高亮" class="headerlink" title="zsh-syntax-highlighting 语法高亮"></a>zsh-syntax-highlighting 语法高亮</h3><p><a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-syntax-highlighting">Github</a><br>zsh语法高亮插件，看着更舒服点。安装流程同上</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
-<p>在 <em>~&#x2F;.zshrc</em> 的 <em>plugins</em> 中添加 <em>zsh-syntax-highlighting</em> ， 注意必须添加在 <em>plugins</em> 的最后<br>至此基本完成iTerm美化</p>
+<p>在 <em>~&#x2F;.zshrc</em> 的 <code>plugins</code> 中添加 <code>zsh-syntax-highlighting</code> ， 注意必须添加在 <code>plugins</code> 的最后<br>至此基本完成iTerm美化</p>
 
     </div>
 
