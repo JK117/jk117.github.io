@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.0.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://jk117.github.io/Setup-Macos/logi_buttons.png">
 <meta property="og:image" content="https://jk117.github.io/Setup-Macos/logi_wheel.png">
 <meta property="article:published_time" content="2023-02-24T16:18:11.000Z">
-<meta property="article:modified_time" content="2023-11-02T02:27:01.465Z">
+<meta property="article:modified_time" content="2023-11-02T02:28:46.128Z">
 <meta property="article:author" content="JK117">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jk117.github.io/Setup-Macos/Setup-Macos/contexts_tab.png">
@@ -198,7 +198,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-11-02 02:27:01" itemprop="dateModified" datetime="2023-11-02T02:27:01+00:00">2023-11-02</time>
+      <time title="Modified: 2023-11-02 02:28:46" itemprop="dateModified" datetime="2023-11-02T02:28:46+00:00">2023-11-02</time>
     </span>
 
   
@@ -215,23 +215,23 @@
 
 <hr>
 <h2 id="命令行设定"><a href="#命令行设定" class="headerlink" title="命令行设定"></a>命令行设定</h2><h3 id="显示隐藏文件"><a href="#显示隐藏文件" class="headerlink" title="显示隐藏文件"></a>显示隐藏文件</h3><p><strong>推荐</strong> 对于开发而言显示隐藏文件是必须的</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults <span class="built_in">write</span> com.apple.finder AppleShowAllFiles -<span class="built_in">boolean</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">killall</span> Finder <span class="comment"># 重启Finder</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">defaults <span class="built_in">write</span> com.apple.finder AppleShowAllFiles -<span class="built_in">boolean</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">killall</span> Finder <span class="comment"># 重启Finder</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="调整鼠标变速"><a href="#调整鼠标变速" class="headerlink" title="调整鼠标变速"></a>调整鼠标变速</h3><p><strong>推荐</strong> Mac的触摸板有多舒服，鼠标就有多难受。究其根本是因为macOS中pointer的加速曲线是为触摸板调校的，而鼠标调用同样的加速曲线会有种无法立即停止的延迟感。可以单独禁用鼠标设备的scaling</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults <span class="built_in">read</span> .GlobalPreferences com.apple.mouse.scaling <span class="comment"># 读取当前scaling</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults <span class="built_in">write</span> .GlobalPreferences com.apple.mouse.scaling <span class="number">-1</span> <span class="comment"># 禁用</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">defaults <span class="built_in">read</span> .GlobalPreferences com.apple.mouse.scaling <span class="comment"># 读取当前scaling</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">defaults <span class="built_in">write</span> .GlobalPreferences com.apple.mouse.scaling <span class="number">-1</span> <span class="comment"># 禁用</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="禁用翻盖开机"><a href="#禁用翻盖开机" class="headerlink" title="禁用翻盖开机"></a>禁用翻盖开机</h3><p><strong>推荐</strong> 有时候想关机了清洁一下键盘，翻开盖子直接DUANG也会有点不方便，本方法仅对Intel处理器的mac有效</p>
-<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nvram AutoBoot=%00 <span class="comment"># 禁用</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nvram AutoBoot=%03 <span class="comment"># 恢复</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight perl"><table><tr><td class="code"><pre><span class="line">sudo nvram AutoBoot=%00 <span class="comment"># 禁用</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight perl"><table><tr><td class="code"><pre><span class="line">sudo nvram AutoBoot=%03 <span class="comment"># 恢复</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="IPv6解析"><a href="#IPv6解析" class="headerlink" title="IPv6解析"></a>IPv6解析</h3><p><strong>选用</strong> 仅在需要时使用</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">networksetup</span> -setv6<span class="literal">off</span> Wi-Fi <span class="comment"># 关闭</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">networksetup</span> -setv6automatic Wi-Fi <span class="comment"># 恢复auto</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">networksetup</span> -setv6<span class="literal">off</span> Wi-Fi <span class="comment"># 关闭</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">networksetup</span> -setv6automatic Wi-Fi <span class="comment"># 恢复auto</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="磁盘工具Debug菜单"><a href="#磁盘工具Debug菜单" class="headerlink" title="磁盘工具Debug菜单"></a>磁盘工具Debug菜单</h3><p><strong>选用</strong> 仅在需要时使用</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com<span class="selector-class">.apple</span><span class="selector-class">.DiskUtility</span> DUDebugMenuEnabled <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">defaults write com<span class="selector-class">.apple</span><span class="selector-class">.DiskUtility</span> DUDebugMenuEnabled <span class="number">1</span></span><br></pre></td></tr></table></figure>
 <p>重启“磁盘工具”，菜单栏里会多出一项“调试”菜单，选中此菜单中的“显示所有分区”菜单项，就会在左侧显示出磁盘的隐藏分区。</p>
 <hr>
 <h2 id="系统-amp-APP设定"><a href="#系统-amp-APP设定" class="headerlink" title="系统&amp;APP设定"></a>系统&amp;APP设定</h2><h3 id="Finder"><a href="#Finder" class="headerlink" title="Finder"></a>Finder</h3><p><strong>推荐</strong> 尽可能展示有用信息</p>
@@ -251,11 +251,11 @@
 <li>在 <em>Feature</em> - <em>Default Results</em> 中设置搜索结果包含的内容和范围</li>
 <li>在 <em>Feature</em> - <em>File Search</em> 中设置激活各项搜索功能的keywords</li>
 <li>在 <em>Feature</em> - <em>Web Search</em> - 🌟 <em>Add Custom Search</em> 添加自定义快捷网络搜索。配置完成后先<code>Command+Space</code>激活，再输入 <em>keyword {query}</em> ，如 <em>bing Hexo</em> 即可直接打开bing搜索关键词Hexo <div class="note info no-icon"><h4 id="Title-Search-Bing-for-query"><a href="#Title-Search-Bing-for-query" class="headerlink" title="Title: Search Bing for {query}"></a>Title: Search Bing for {query}</h4><p><strong>Keyword: bing</strong></p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//</span>cn.bing.com/search?q=&#123;query&#125; <span class="comment"># Search URL</span></span><br></pre></td></tr></table></figure></div>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">https:<span class="regexp">//</span>cn.bing.com/search?q=&#123;query&#125; <span class="comment"># Search URL</span></span><br></pre></td></tr></table></figure></div>
  只要是带query的url都能自定义，因此也可以用来翻译 <div class="note info no-icon"><h4 id="Translate-query-from-English-to-Chinese"><a href="#Translate-query-from-English-to-Chinese" class="headerlink" title="Translate {query} from English to Chinese"></a>Translate {query} from English to Chinese</h4><p><strong>tl</strong></p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://cn.bing.com/translator?<span class="keyword">ref</span>=TThis&amp;<span class="type">text</span>=&#123;query&#125;&amp;<span class="keyword">from</span>=en&amp;<span class="keyword">to</span>=zh-Hans</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">https://cn.bing.com/translator?<span class="keyword">ref</span>=TThis&amp;<span class="type">text</span>=&#123;query&#125;&amp;<span class="keyword">from</span>=en&amp;<span class="keyword">to</span>=zh-Hans</span><br></pre></td></tr></table></figure></div>
  <div class="note info no-icon"><h4 id="Translate-query-from-Chinese-to-English"><a href="#Translate-query-from-Chinese-to-English" class="headerlink" title="Translate {query} from Chinese to English"></a>Translate {query} from Chinese to English</h4><p><strong>tlc</strong></p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://cn.bing.com/translator?<span class="keyword">ref</span>=TThis&amp;<span class="type">text</span>=&#123;query&#125;&amp;<span class="keyword">from</span>=zh-Hans&amp;<span class="keyword">to</span>=en</span><br></pre></td></tr></table></figure></div></li>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">https://cn.bing.com/translator?<span class="keyword">ref</span>=TThis&amp;<span class="type">text</span>=&#123;query&#125;&amp;<span class="keyword">from</span>=zh-Hans&amp;<span class="keyword">to</span>=en</span><br></pre></td></tr></table></figure></div></li>
 </ol>
 <!-- - amz - https://www.amazon.com/s?k={query} - Search Amazon for {query}
 - bing - https://cn.bing.com/search?q={query} - Search Bing for {query}

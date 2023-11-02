@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.0.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
@@ -28,7 +28,7 @@
 <meta property="og:description" content="开发+日常向代理配置的踩坑整理，MacOS(Apple Silicon)+zsh">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-11T15:05:10.000Z">
-<meta property="article:modified_time" content="2023-11-02T02:27:01.465Z">
+<meta property="article:modified_time" content="2023-11-02T02:28:46.128Z">
 <meta property="article:author" content="JK117">
 <meta property="article:tag" content="Proxy Clash">
 <meta name="twitter:card" content="summary">
@@ -188,7 +188,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-11-02 02:27:01" itemprop="dateModified" datetime="2023-11-02T02:27:01+00:00">2023-11-02</time>
+      <time title="Modified: 2023-11-02 02:28:46" itemprop="dateModified" datetime="2023-11-02T02:28:46+00:00">2023-11-02</time>
     </span>
 
   
@@ -208,9 +208,9 @@
 <h3 id="SOCKS代理"><a href="#SOCKS代理" class="headerlink" title="SOCKS代理"></a>SOCKS代理</h3><p>会话层（OSI Session Layer）代理，可以代理包括HTTP、HTTPS、POP3、SMTP、FTP、SFTP等各种类型的网络请求。广泛使用的有socks5代理，即socks协议的第五个版本，在支持TCP的基础上新增对UDP、身份验证、服务端域名解析等功能的支持。</p>
 <h2 id="系统代理"><a href="#系统代理" class="headerlink" title="系统代理"></a>系统代理</h2><p>不管什么系统，设置了系统代理不一定就在任何场景下都能使用（几乎一定不）。所谓的“系统代理”更像是系统提供的“默认代理”接口。<br>很多应用都有自己的代理设置。比如Chrome默认使用系统代理，Firefox、Telegram则默认不使用系统代理（可手动选择系统代理）。大部分命令行终端默认也不使用系统代理，需要手动配置。</p>
 <h2 id="命令行终端代理"><a href="#命令行终端代理" class="headerlink" title="命令行终端代理"></a>命令行终端代理</h2><p>命令行终端想走代理可以将以下格式内容加入shell的配置文件，zsh写入 <em>&#x2F;.zshrc</em>，bash写入 <em>&#x2F;.bashrc</em>，</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=http://ip:port</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://ip:port</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=http://ip:port</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://ip:port</span><br></pre></td></tr></table></figure>
 <p>也可以同时设置所有代理（推荐）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> ALL_PROXY=socks5://127.0.0.1:7890    <span class="comment"># Clash默认混合端口</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> ALL_PROXY=socks5://127.0.0.1:7890    <span class="comment"># Clash默认混合端口</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p>终端代理有以下常用环境变量</p>
 <table>
@@ -248,7 +248,7 @@
 </tr>
 </tbody></table>
 <p>all_proxy 指定了全部协议都可以通过这个代理，它的优先级要低于其他变量。<br>no_proxy 支持通配符，多个主机&#x2F;域名之间使用逗号间隔。<br>另外，还有环境变量的大小写问题。有的应用可能会去读取 HTTP_PROXY 等大写的环境变量，此时自然读取不到对应的值。这种情况下，可以同时设置大小写环境变量来保证兼容性，例如</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=http://xx.xx.xx.xx:1234</span><br><span class="line"><span class="built_in">export</span> HTTP_PROXY=http://xx.xx.xx.xx:1234</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=http://xx.xx.xx.xx:1234</span><br><span class="line"><span class="built_in">export</span> HTTP_PROXY=http://xx.xx.xx.xx:1234</span><br></pre></td></tr></table></figure>
 
 <p><b><span style="color:#00FF00;">export</span> <span style="color:#0000FF;">http_proxy</span>&#x3D;<span style="color:#FF0000;">http://</span><span style="color:#FF7F00;">ip</span>:<span style="color:#8B00FF;">port</span></b></p>
 <p>以以上格式为例具体说明环境变量和取值中两个<b>http</b>各自的含义</p>
@@ -263,14 +263,14 @@
 </li>
 </ul>
 <h2 id="应用配置"><a href="#应用配置" class="headerlink" title="应用配置"></a>应用配置</h2><h3 id="brew"><a href="#brew" class="headerlink" title="brew"></a>brew</h3><p>brew支持全局代理，通过在环境变量中设置 all_proxy 代理端口，并在代理软件中启用同样的协议和端口</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> all_proxy=socks5://127.0.0.1:7890    <span class="comment"># Clash默认混合端口</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> all_proxy=socks5://127.0.0.1:7890    <span class="comment"># Clash默认混合端口</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><ul>
 <li><p>http&#x2F;https代理</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置全局代理</span></span><br><span class="line"><span class="comment"># http</span></span><br><span class="line">git config --global http.proxy http://127.0.0.1:1080</span><br><span class="line"><span class="comment"># https</span></span><br><span class="line">git config --global https.proxy https://127.0.0.1:1080</span><br><span class="line"><span class="comment"># socks5</span></span><br><span class="line">git config --global http.proxy socks5://127.0.0.1:1080</span><br><span class="line">git config --global https.proxy socks5://127.0.0.1:1080</span><br><span class="line"><span class="comment"># 取消全局代理</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只对github.com使用代理</span></span><br><span class="line">git config --global http.https://github.com.proxy socks5://127.0.0.1:1080</span><br><span class="line">git config --global https.https://github.com.proxy socks5://127.0.0.1:1080</span><br><span class="line"><span class="comment"># 取消github代理</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> http.https://github.com.proxy</span><br><span class="line">git config --global --<span class="built_in">unset</span> https.https://github.com.proxy</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>ssh代理</p>
-<figure class="highlight bash"><figcaption><span>~/.ssh/config</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置全局代理</span></span><br><span class="line">ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p</span><br><span class="line"><span class="comment"># 只对github.com使用代理</span></span><br><span class="line">Host github.com</span><br><span class="line">    ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><figcaption><span>~/.ssh/config</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># 设置全局代理</span></span><br><span class="line">ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p</span><br><span class="line"><span class="comment"># 只对github.com使用代理</span></span><br><span class="line">Host github.com</span><br><span class="line">    ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h3><p>npm原生不支持socks代理</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看</span></span><br><span class="line">npm config get proxy</span><br><span class="line">npm config get https-proxy</span><br><span class="line"><span class="comment"># 设置</span></span><br><span class="line">npm config <span class="built_in">set</span> proxy http://server:port</span><br><span class="line">npm config <span class="built_in">set</span> https-proxy https://server:port</span><br><span class="line"><span class="comment"># 重置</span></span><br><span class="line">npm config <span class="built_in">set</span> proxy null <span class="comment"># or npm config delete proxy</span></span><br><span class="line">npm config <span class="built_in">set</span> https-proxy null <span class="comment"># or npm config delete https-proxy</span></span><br></pre></td></tr></table></figure>
@@ -278,7 +278,7 @@
 <h3 id="yarn"><a href="#yarn" class="headerlink" title="yarn"></a>yarn</h3><p>yarn原生不支持socks代理</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看</span></span><br><span class="line">yarn config get proxy  </span><br><span class="line">yarn config get https-proxy</span><br><span class="line"><span class="comment"># 设置</span></span><br><span class="line">yarn config <span class="built_in">set</span> proxy http://server:port</span><br><span class="line">yarn config <span class="built_in">set</span> https-proxy https://server:port</span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line">yarn config delete proxy  </span><br><span class="line">yarn config delete https-proxy</span><br></pre></td></tr></table></figure>
 
-<h3 id="pip"><a href="#pip" class="headerlink" title="pip"></a>pip</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install pysocks</span><br><span class="line">pip install -r requirements.txt --proxy=<span class="string">&#x27;socks5://127.0.0.1:1080&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="pip"><a href="#pip" class="headerlink" title="pip"></a>pip</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install pysocks</span><br><span class="line">pip install -r requirements.txt --proxy=<span class="string">&#x27;socks5://127.0.0.1:1080&#x27;</span></span><br></pre></td></tr></table></figure>
     </div>
 
     
