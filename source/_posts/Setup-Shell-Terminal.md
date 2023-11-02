@@ -35,9 +35,18 @@ sudo xcode-select --install
 ## 代理配置
 由于国内网络问题，直接使用官方方法安装 Oh My Zsh 和 Homebrew 大概率会失败。解决方法有很多种，如国内镜像脚本安装、换源等等。单个人倾向于直接主要使用代理，因此先配置一个可用的代理是很有必要的。我日常使用ClashX开启代理，具体配置不详细展开，这里的重点是记录配置后的代理端口
 {% asset_img clashx_proxy.png %}
-ClashX的一个优势是可以混合http和socks5的代理端口，我们可以不用区分所使用的工具到底用的到底是不是http/https，无脑往一个端口塞就行。理论上讲肯定是不好的行为，但暂时还没明显问题，后续因为这个踩到坑了再回来补充说明。ClashX默认的混合代理端口是7890，在当前终端的配置文件中加入
+ClashX的一个优势是可以混合http和socks5的代理端口，大部分情况下我们可以不用区分所使用的工具到底在使用什么协议，直接往一个端口塞就行。ClashX默认的混合代理端口是7890，在当前终端的配置文件中加入：
 ```zsh
 export ALL_PROXY=socks5://127.0.0.1:7890
+```
+有些工具不支持`ALL_PROXY`这个字段，或者会区分大小写，这里建议补全大小写和HTTP代理的相关字段：
+```zsh
+export ALL_PROXY=socks5://127.0.0.1:7890
+export all_proxy=socks5://127.0.0.1:7890
+export HTTP_PROXY=socks5://127.0.0.1:7890
+export http_proxy=socks5://127.0.0.1:7890
+export HTTPS_PROXY=socks5://127.0.0.1:7890
+export https_proxy=socks5://127.0.0.1:7890
 ```
 如果还没有终端的配置文件，可以直接新建
 ```zsh zsh
@@ -46,7 +55,6 @@ touch ~/.zshrc
 ```bash bash
 touch ~/.bash_profile
 ```
-如果是其他区分Http和Socks5端口的工具，这里也先选用Socks5的代理端口以便git和brew使用
 
 ## Oh My Zsh
 [官网](https://ohmyz.sh/) [Doc](https://github.com/ohmyzsh/ohmyzsh/wiki)
@@ -222,8 +230,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 ZSH_THEME="powerlevel10k/powerlevel10k"
 ```
 保存，终端会自动提示开始选择配置，如果没有自动提示，或者想重新覆写配置，可以通过`p10k configure`指令进行
-p10k使用 *MesloLGS NF* 字体，配置过程中会提示询问是否安装，墙裂建议安装。并在配置完成后在 *iTerm Settings - Profiles - Text* 中将 *Font* 设置为 *MES咯LGS NF* 。如果使用vscode的话，也需要在vscode设置中修改 *terminal.integrated.fontFamily* 配置项，添加 *'MesloLGS NF'*
-另外在 *.zshrc* 中也有针对zsh主题的配置字段 *ZSH_THEME(默认为robbyrussell)* ，注释掉以防冲突
+p10k使用MesloLGS NF字体，配置过程中会提示询问是否安装，墙裂建议安装。并在配置完成后在 *iTerm Settings - Profiles - Text* 中将 *Font* 设置为 `MESLOLGS NF` 。如果使用vscode的话，也需要在vscode设置中修改 `terminal.integrated.fontFamily` 配置项，添加 `'MesloLGS NF'`
 
 ### zsh-autosuggestions 自动补全
 [Github](https://github.com/zsh-users/zsh-autosuggestions)
@@ -231,7 +238,7 @@ zsh的自动填充插件，实现Tab一时爽，一直Tab一直爽。Github主�
 ```zsh
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
-然后plugin manager载入，即在 *~/.zshrc* 的 *plugins* 中添加 *zsh-autosuggestions*
+然后plugin manager载入，即在 *~/.zshrc* 的 `plugins` 中添加 `zsh-autosuggestions`
 
 ### zsh-syntax-highlighting 语法高亮
 [Github](https://github.com/zsh-users/zsh-syntax-highlighting)
@@ -239,5 +246,5 @@ zsh语法高亮插件，看着更舒服点。安装流程同上
 ```zsh
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
-在 *~/.zshrc* 的 *plugins* 中添加 *zsh-syntax-highlighting* ， 注意必须添加在 *plugins* 的最后
+在 *~/.zshrc* 的 `plugins` 中添加 `zsh-syntax-highlighting` ， 注意必须添加在 `plugins` 的最后
 至此基本完成iTerm美化
