@@ -277,9 +277,6 @@ h5 {
 h6 {
   font-size: 0.875em;
 }
-p {
-  margin: 0 0 20px;
-}
 a {
   border-bottom: 1px solid #999;
   color: var(--link-color);
@@ -1202,7 +1199,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #6c4e78;
+    background: #fff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -1538,7 +1535,7 @@ pre code {
   flex-direction: column;
 }
 .links-of-blogroll-item {
-  max-width: calc(100% - 20px);
+  max-width: 100%;
 }
 .links-of-blogroll-item a {
   box-sizing: border-box;
@@ -1973,6 +1970,7 @@ pre code {
   border-bottom: 0;
   color: var(--link-color);
   display: inline-block;
+  max-width: 100%;
   position: relative;
 }
 .posts-expand .post-title-link::before {
