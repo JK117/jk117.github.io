@@ -587,10 +587,10 @@ hexo-server@^3.0.0:
     picocolors "^1.0.0"
     serve-static "^1.14.1"
 
-hexo-theme-next@^8.24.0:
-  version "8.24.0"
-  resolved "https://registry.yarnpkg.com/hexo-theme-next/-/hexo-theme-next-8.24.0.tgz#83a1518966c3977dfb436eb440c87824e9a1e7dd"
-  integrity sha512-GMjNgoygyHWlPSRGZVjsjhPIEXmtWl0OWWmXxNbZdsf/f4fx+wS3OOxecFfsVJe9FVEv0Uu1hOvxPSgOjdDsSQ==
+hexo-theme-next@^8.25.0:
+  version "8.25.0"
+  resolved "https://registry.yarnpkg.com/hexo-theme-next/-/hexo-theme-next-8.25.0.tgz#723913e95e454988e1e22f3f9f977aa3bf92b144"
+  integrity sha512-ZboBoswarJAjGKnQxtepD3ZaOYJAQFj+SaIL8l7w/FcDZpqFPeBerVd861YMujQW4XRHiREh+dEjdJQeArhvkg==
 
 hexo-util@^3.0.1, hexo-util@^3.1.0, hexo-util@^3.3.0:
   version "3.3.0"
